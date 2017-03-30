@@ -1,0 +1,212 @@
+html{
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+.head, footer {
+    text-align: center;
+    color: rgba(59, 30, 31, 0.91);
+    font-family: 'Sansita', sans-serif;
+}
+.head {
+    border-bottom: 3px solid rgba(145, 15, 27, 0.74);
+    padding-bottom: 1%;
+    background: url("https://a0.muscache.com/airbnb/static/account_activation/airbnb_background@2x-440d0f2b7a2a6916150b25be0d255638.png");
+}
+footer {
+    background: url("http://uconstructor.com/_ld/5/03924418.jpg");
+    padding-top: 1%;
+    border-top: 2px solid rgba(145, 15, 27, 0.74);
+}
+#greeting {
+    float: left;
+    font-size: large;
+    vertical-align: middle;
+    padding: 12px 0px 0px 10px;
+}
+body {
+    padding: 0px; !important;
+}
+.main {
+    height: 50%;
+}
+#login_btn, #logout_btn {
+    float: right;
+    vertical-align: middle;
+    padding: 7px 10px 0px 0px;
+}
+.head_title {
+    text-align: center;
+    font-size: xx-large;
+    padding-right: 5%;
+}
+.nav {
+    padding: 10px 0px 10px 0px;
+    font-family: 'Oswald', sans-serif;
+}
+.footer_content {
+    text-align: center;
+    padding-bottom: 10px;
+    color: #aaaaaa;
+}
+.old-note {
+    display: none;
+    text-align: center;
+    font-family: 'Sansita', sans-serif;
+}
+#stop_message {
+    margin: 20px 0 20px 0;
+    font-family: 'Sansita', sans-serif;
+    text-align: center;
+}
+.message_text {
+    word-break: break-all;
+    width: 80%;
+}
+.message_date {
+    float: right;
+}
+.chat {
+    height: 75vh;
+    overflow-y: auto;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+.chat div {
+    padding: 3px;
+}
+.type_zone {
+    margin-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+#type_message, #type_answer {
+    resize: none;
+    overflow-y:visible;
+    padding-bottom: 0px;
+}
+#down_btn {
+    margin: 15px;
+    padding: 5px;
+}
+#send_message, #send_answer {
+    margin: 0 0 7% 10px;
+}
+#send_message:hover,#like:hover,#send_answer:hover,#btn_up:hover, #down_btn:hover, #login_btn:hover, #logout_btn:hover, #registration:hover, .note_date span img:hover, #deleteNoteBtn:hover {
+    cursor: pointer;
+}
+#send_message:active,#send_answer:active, #down_btn:active, #btn_up:active {
+    border: 1px solid grey;
+}
+.login_form_modal div {
+    border-radius: 0;
+}
+#registration {
+    font-family: 'Sansita', sans-serif;
+    text-align: center;
+}
+.note img {
+    max-width: 100%;
+    max-width: 1280px;
+    max-height: 420px;
+}
+.note {
+    word-break: break-all;
+    max-height: 720px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.single_note {
+    word-break: normal;
+}
+.note_title {
+    text-align: center;
+    word-break: normal;
+}
+.note_title a{
+    text-decoration:none;
+    color: rgba(33, 24, 23, 0.89);
+}
+.note_link {
+    padding: 5px;
+    text-decoration: underline;
+}
+.note_date {
+    color: rgba(51, 58, 39, 0.41);
+    text-align: left;
+    position: relative;
+    left: 20px;
+    top: 20px;
+    font-size: smaller;
+}
+.note_date span {
+    float: right;
+    margin-right: 20px;
+    padding-bottom: 20px;
+}
+.note_date span img:active, #deleteNoteBtn:active{
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.note, .note_link{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.single_note img{
+    max-width: 100%;
+}
+#deleteNoteBtn {
+    margin-top: 5px;
+}
+.comments {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.comment{
+    margin: 15px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.sub_comment {
+    margin: 15px 30px 15px 10vw;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(16, 5, 60, 0.5);
+}
+.comment_header {
+    padding: 5px;
+    border-bottom: 1px solid rgba(25, 46, 86, 0.31);
+}
+.commentator_name {
+    color: rgba(91, 25, 117, 0.75);
+}
+.comment_date {
+    float: right;
+    padding-right: 10px;
+    color: #636b6f;
+}
+.comment_text {
+    font-size: medium;
+    word-break: break-all;
+    padding: 10px 10px 10px 20px;
+}
+#like_count {
+    display: inline;
+    font-size: x-large;
+    padding-left: 5px;
+}
+#main_menu {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: solid 1px rgba(205, 205, 205, 0.25);
+}
+.vertical_menu {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+#user_image {
+    float: right;
+    max-width: 90%;
+    max-height: 20vh;
+    border-radius: 3px;
+}
+
+
+

@@ -1,0 +1,898 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цены | Вебстудия</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="fancybox/jquery.fancybox.css" type="text/css" media="screen"/>
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<!--/head-->
+
+<body>
+<div id="cartForm" style="display:none;width:500px;">
+    <h2>Для заказа заполните форму:</h2>
+
+    <div role="form">
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="phone_number">Номер телефона</label>
+            <input type="text" id="phone_number" class="form-control">
+        </div>
+        <button class="btn btn-primary" onclick="sendCartZakaz();">Отправить</button><span id="form_success" style="display: none; margin-left : 60px; padding:auto;color: #196160;font-size: initial;font-weight: bold;">Заказ успешно отправлен^-^</span>
+    </div>
+
+</div>
+
+<header id="header">
+    <div class="navbar navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+                    <h1><img src="images/logo.png" alt="logo"></h1>
+                </a>
+
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a href="https://mateshchuk.000webhostapp.com/public/home">Главная</a></li>
+                    <li class="dropdown"><a href="#">Услуги <i class="fa fa-angle-down"></i></a>
+                        <ul role="menu" class="sub-menu">
+                            <li><a href="index.html">Создание сайта</a></li>
+                            <li><a href="index.html">Продвижение</a></li>
+                            <li><a href="index.html">Контекстная реклама</a></li>
+                        </ul>
+                    </li>
+                    <li class="active"><a href="index.html">Цены</a></li>
+                    <li class="dropdown"><a href="index.html">Магазин</a></li>
+                    <li class="dropdown"><a href="index.html">Портфолио</a></li>
+                    <li class="dropdown"><a href="index.html">Блог</a></li>
+                    <li class="dropdown"><a href="index.html">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="search">
+                <form role="form">
+                    <i class="fa fa-search"></i>
+                    <div class="field-toggle">
+                        <input type="text" class="search-form" autocomplete="off" placeholder="Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!--/#header-->
+
+<section id="page-breadcrumb">
+    <div class="vertical-center sun">
+        <div class="container">
+            <div class="row">
+                <div class="action">
+
+                    <div class="col-sm-6">
+                        <h1 class="title">Заказ услуг</h1>
+                        <p>просчёт стоимости</p>
+                    </div>
+
+                    <div id="cart" class="col-sm-5 col-sm-offset-1" style="display:none;">
+                        <i class="fa fa-shopping-basket fa-5x pull-left" aria-hidden="true"></i>
+
+
+                        <div id="basket_info">
+                            <p>Услуг в корзине: <span id="NumZakazov"></span></p>
+                            <p>На сумму: <span id="SummaZakazov"></span> руб.</p>
+                            <p>Будут выполнены: <span id="DataZakazov"></span></p>
+                            <button class="btn btn-green fancybox" href="#cartForm">Заказать</button>
+                            <button class="btn btn-red" onclick="clearCart();">Очистить</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#action-->
+
+<section class="container">
+
+    <!--
+       1. Выбор услуги
+    -->
+    <div class="price-table">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2 class="page-header">1. Выберите необходимую услугу.</h2>
+            </div>
+
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+                <div class="single-price price-one">
+                    <div class="table-heading">
+                        <p class="plan-name" id="site_title">Создание сайта</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="600ms">
+                <div class="single-price price-two">
+                    <div class="table-heading">
+                        <p class="plan-name" id="seo">Продвижение сайта</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="900ms">
+                <div class="single-price price-four">
+                    <div class="table-heading">
+                        <p class="plan-name" id="reklama_title">Контекстная реклама</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+       1. Создание сайта
+       2. Типы сайтов
+    -->
+    <div id="site_menu" style="display: none;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-header">2. Какой сайт Вам нужен?</h2>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp site_menu_item" data-wow-duration="500ms" data-wow-delay="300ms">
+                <div class="feature-inner price-one">
+                    <h3>Сайт "проще некуда"</h3>
+                    <h4>от 3500 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Кол-во страниц: 1-3</li>
+                            <li>Готовность: 2-9 дней</li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="showSiteCalc(0);">Просчитать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp site_menu_item" data-wow-duration="500ms" data-wow-delay="500ms">
+                <div class="feature-inner price-one">
+                    <h3>Сайт-визитка</h3>
+                    <h4>от 7500 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Кол-во страниц: 3-10</li>
+                            <li>Готовность: 3-14 дней</li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="showSiteCalc(1);">Просчитать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp site_menu_item" data-wow-duration="500ms" data-wow-delay="700ms">
+                <div class="feature-inner price-one">
+                    <h3>Корпоративный сайт</h3>
+                    <h4>от 10500 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Кол-во страниц: 11-150</li>
+                            <li>Готовность: 7-30 дней</li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="showSiteCalc(2);">Просчитать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp site_menu_item" data-wow-duration="500ms" data-wow-delay="900ms">
+                <div class="feature-inner price-one">
+                    <h3>Интернет-магазин</h3>
+                    <h4>от 12000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Кол-во позиций: 1-5000</li>
+                            <li>Готовность: 10-45 дней</li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="showSiteCalc(3);">Просчитать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp site_menu_item" data-wow-duration="500ms"
+                 data-wow-delay="1100ms">
+                <div class="feature-inner price-one">
+                    <h3>Landing page</h3>
+                    <h4>от 10000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Логических блоков: 1-10</li>
+                            <li>Готовность: 2-21 дней</li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="showSiteCalc(4);">Просчитать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp site_menu_item" data-wow-duration="500ms"
+                 data-wow-delay="1300ms">
+                <div class="feature-inner price-one">
+                    <h3>Эксклюзив</h3>
+                    <h4>по договоренности</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Если Вы не нашли подходящий проект, то опишите его и мы сообщим стоимость.</li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="$('#exclusive_form').show();showExclusive();">Описать
+                            проект
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+       1. Продвижение
+       2. Типы сайтов
+    -->
+    <div id="website_promotion" style="display: none;">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2 class="page-header">2. Как Вы желаете продвигать сайт?</h2>
+            </div>
+
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+                <div class="single-price price-one">
+                    <div class="table-heading">
+                        <p class="plan-name" id="seo_abonent_obslujivanie">Абонентское обслуживание</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="600ms">
+                <div class="single-price price-two">
+                    <div class="table-heading">
+                        <p class="plan-name" id="seo_constructor">Индивидуальный конструктор</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+       1. Реклама
+       2. Виды рекламы
+    -->
+    <div id="advertising_types" style="display: none;">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2 class="page-header">2. В какой системе хотите дать рекламу?</h2>
+            </div>
+
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
+                <div class="single-price price-one">
+                    <div class="table-heading">
+                        <p class="plan-name" id="reklamaYandex">Яндекс Директ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="600ms">
+                <div class="single-price price-two">
+                    <div class="table-heading">
+                        <p class="plan-name" id="reklamaGoogleAdw">Google adwords</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+       1. Продвижение
+       2. Виды продвижения
+       3. Типы сайтов для продвижения
+    -->
+    <div id="seo_types" style="display: none;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-header">3. Выберите тип сайта для продвижения.</h2>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp seo_type_item" data-wow-duration="500ms" data-wow-delay="300ms">
+                <div class="feature-inner price-one">
+                    <h3>Сайт "проще некуда"</h3>
+                    <h4>10000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="adminCheck"> Администрирование
+                                    </label>
+                                </div>
+                                + 10000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addSeoAbonentToCart(0);">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp seo_type_item" data-wow-duration="500ms" data-wow-delay="500ms">
+                <div class="feature-inner price-one">
+                    <h3>Сайт-визитка</h3>
+                    <h4>от 20000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="adminCheck"> Администрирование
+                                    </label>
+                                </div>
+                                + 15000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addSeoAbonentToCart(1);">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp seo_type_item" data-wow-duration="500ms" data-wow-delay="700ms">
+                <div class="feature-inner price-one">
+                    <h3>Корпоративный сайт</h3>
+                    <h4>от 20000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="adminCheck"> Администрирование
+                                    </label>
+                                </div>
+                                + 15000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addSeoAbonentToCart(2);">Заказать</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp seo_type_item" data-wow-duration="500ms" data-wow-delay="900ms">
+                <div class="feature-inner price-one">
+                    <h3>Интернет-магазин</h3>
+                    <h4>от 10000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="adminCheck"> Администрирование
+                                    </label>
+                                </div>
+                                + 5000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addSeoAbonentToCart(3);">Заказать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+       1. Реклама
+       2. Виды рекламы
+       3. Объем рекламы
+    -->
+    <div id="advertising_volume" style="display: none;">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="page-header">3. Выберите объем необходимой рекламы.</h2>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp context_reklama_menu_item" data-wow-duration="500ms"
+                 data-wow-delay="300ms">
+                <div class="feature-inner price-one">
+                    <h3>Ключей до 1000</h3>
+                    <h4>5000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Готовность: 2 дня</li>
+                            <li>
+                                <div class="checkbox ">
+                                    <label>
+                                        <input type="checkbox" class="accomp"> Сопровождение
+                                    </label>
+                                </div>
+                                + 3000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addReklamaToCart(0);">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp context_reklama_menu_item" data-wow-duration="500ms"
+                 data-wow-delay="500ms">
+                <div class="feature-inner price-one">
+                    <h3>Ключей 1000 - 3000</h3>
+                    <h4>9000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Готовность: 4 дня</li>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="accomp"> Сопровождение
+                                    </label>
+                                </div>
+                                + 6000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addReklamaToCart(1);">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp context_reklama_menu_item" data-wow-duration="500ms"
+                 data-wow-delay="700ms">
+                <div class="feature-inner price-one">
+                    <h3>Ключей 3000 - 5000</h3>
+                    <h4>15000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Готовность: 5 дней</li>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="accomp"> Сопровождение
+                                    </label>
+                                </div>
+                                + 9000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addReklamaToCart(2);">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3 wow fadeInUp context_reklama_menu_item" data-wow-duration="500ms"
+                 data-wow-delay="900ms">
+                <div class="feature-inner price-one">
+                    <h3>Ключей от 5000</h3>
+                    <h4>25000 руб.</h4>
+                    <div class="single-price">
+                        <ul>
+                            <li>Готовность: 6 дней</li>
+                            <li>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="accomp"> Сопровождение
+                                    </label>
+                                </div>
+                                + 12000 руб.
+                            </li>
+                        </ul>
+                        <button class="btn btn-buynow" onclick="addReklamaToCart(3);">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+       1. Создание сайта
+       2. Типы сайтов
+       3. Рассчет стоимости
+    -->
+    <div class="calculate" style="display: none;">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2 class="page-header">3. Расчёт стоимости.</h2>
+            </div>
+
+            <!--
+               Создание сайта
+               Типы сайтов
+               Рассчет стоимости
+               Обычные виды сайтов
+            -->
+            <div id="siteCalcForm" class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-duration="500ms"
+                 data-wow-delay="1300ms" style="display: none;">
+
+                <form oninput="showSiteAnswer(ToCalculateSite(type));">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td id="site_pages_form">Количество страниц</td>
+                            <td>
+                                <div class="form-group">
+                                    <input id="site_pages" type="number" min="1" max="3" name="site_pages"
+                                           class="form-control" required="required">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Дизайн</td>
+                            <td>
+                                <div class="form-group">
+                                    <select type="text" id="site_design" class="form-control">
+                                        <option value="design_gotovii" >Готовый</option>
+                                        <option value="design_pod_zakaz">Под заказ</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Тексты</td>
+                            <td>
+                                <div class="form-group">
+                                    <select type="text" id="site_texts" class="form-control">
+                                        <option value="text_gotovii">Пишем мы</option>
+                                        <option value="text_sam">Пишите сами</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        <tfoot style="background: #f1f1f1;border-top: 3px solid #d0d8d8;">
+                        <tr>
+                            <td>Дней потребуется: <span id="site_answer_date"></span></td>
+                            <td>Стоимость: <span id="site_answer_price"></span><b> руб.</b></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-red" onclick="fastSiteZakaz();" style="margin-bottom: 10px;">Заказать сразу</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-green" onclick="addSiteToCart();" style="margin-bottom: 10px;">Добавить в корзину
+                        </button>
+                    </div>
+                    <div id="predlojenie" style="display: none;align:center;font-size: initial;font-weight: bold;color:#196160;text-align: center;">Дорого? Сделаем скидку Звоните!</div>
+                </form>
+
+            </div>
+
+
+            <!--
+               Создание сайта
+               Типы сайтов
+               Рассчет стоимости
+               Эксклюзивный сайт
+            -->
+            <div id="exclusive_form" class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-duration="500ms"
+                 data-wow-delay="1300ms" style="display: none;">
+
+                <form id="exclusive_form_error">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td>Вид сайта</td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" id="exclusive_type_site" class="form-control"
+                                           required="required">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Количество страниц</td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="number" min="1" max="5000" name="site_pages" class="form-control"
+                                           required="required" id="exclusive_pages">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Нужны ли тексты?</td>
+                            <td>
+                                <div class="form-group">
+                                    <label class="radio-inline">
+                                        <input type="radio" name="exclusive_text" id="inlineRadio1" value="yes"> Да, нужны!
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="exclusive_text" id="inlineRadio2" value="no"> Нет.
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ваши пожелания:</td>
+                            <td>
+                                <div class="form-group">
+                                    <textarea id="exclusive_comment" class="form-control" rows="3"></textarea>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        <tfoot style="background: #f1f1f1;border-top: 3px solid #d0d8d8;">
+                        </tfoot>
+                    </table>
+
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-red" onclick="fastExclusiveZakaz();">Заказать сразу</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-green" onclick="addExclusiveToCart();">Добавить в корзину
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <!--
+       1. Продвижение
+       2. Виды продвижения
+       3. Индивидуальный конструктор
+    -->
+    <div class="individual_constructor" style="display: none;">
+        <div class="row">
+
+            <div class="col-md-12">
+                <h2 class="page-header">3. Выберите необходимые Вам пункты.</h2>
+            </div>
+
+            <!--
+               Создание сайта
+               Типы сайтов
+               Рассчет стоимости
+               Обычные виды сайтов
+            -->
+            <div class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="1300ms">
+
+                <form id="seoCalcForm" onchange="showSeoAnswer(ToCalculateSeo());">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td>Количество страниц</td>
+                            <td>
+                                <div class="form-group">
+                                    <input id="seo_pages" type="number" min="1" max="100" name="seo_pages"
+                                           class="form-control" required="required">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Вид сайта</td>
+                            <td>
+                                <div class="form-group">
+                                    <select type="text" id="seo_type" class="form-control">
+                                        <option value="Сайт «проще некуда»">Сайт «проще некуда»</option>
+                                        <option value="Сайт-визитка">Сайт-визитка</option>
+                                        <option value="Корпоративный сайт">Корпоративный сайт</option>
+                                        <option value="Интернет-магазин">Интернет-магазин</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Уникальные тексты
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Файл sitemap
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Файл robots.txt
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Настройка метрики
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Настройка вебмастера яндекс
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Настройка Google analitics
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Настройка вебмастера гугл
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Сбор семантического ядра
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Прописать метатеги title
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Прописать метатеги
+                                        description
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Прописать метатеги keywords
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Оптимизировать заголовки
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Выделение ключевых фраз
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Внутренняя перелинковка
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Favicon
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Настроить уведомление о
+                                        неработающем сайте
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Страница 404 страницы
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="seo_checkbox_class"> Аналитика сайта и
+                                        рекомендации
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        <tfoot style="background: #f1f1f1;border-top: 3px solid #d0d8d8;">
+                        <tr>
+                            <td>Дней потребуется: <span id="seo_answer_date"></span></td>
+                            <td>Стоимость: <span id="seo_answer_price"></span><b> руб.</b></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-red"  onclick="fastSeoZakaz();">Заказать сразу</button>
+                    </div>
+                    <div class="col-sm-6 text-center">
+                        <button type="button" class="btn btn-green" onclick="addSeoToCart();">Добавить в корзину
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="padding"></div>
+
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <div class="row2">
+            <div class="col-sm-12 text-center bottom-separator">
+                <img src="images/home/under.png" class="img-responsive inline" alt="">
+            </div>
+        </div>
+    </div>
+</footer>
+<!--/#footer-->
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/wow.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/priceData.js"></script>
+<script type="text/javascript" src="js/calc.js"></script>
+<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+    (function ($, undefined) {
+        $(function () {
+            $(".fancybox").fancybox({
+                beforeLoad : function() {
+                    zakaz = [];
+                }
+            });
+        });
+    })(jQuery);
+</script>
+
+</body>
+
+</html>
