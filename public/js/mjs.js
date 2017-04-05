@@ -2,7 +2,7 @@ var last = 0;
 var first;
 $(document).ready(function(){
     update();
-    setTimeout(down, 700);
+    setTimeout(down, 1000);
 });
 
 function update(){

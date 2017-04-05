@@ -36,7 +36,7 @@ class AuthController extends Controller
             $user->password = Hash::make($r->input('password'));
             $user->save();
             if(isset($img)) {
-                if(($img->extension() == "jpeg" || $img->extension() == "jpg" || $img->extension() == "png") && $img->getClientSize() < 1000000) {
+                if(($img->extension() == "jpeg" || $img->extension() == "jpg" || $img->extension() == "png") && $img->getClientSize() < 5000000) {
                     $img->move('images', $user->id . ".jpeg", array());
                     $user->image = $user->id;
                     $user->save();

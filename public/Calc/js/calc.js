@@ -550,7 +550,7 @@ function sendCartZakaz() {
                 },
                 function(data){
 sendedZakaz();
-$('#page-breadcrumb').append(data);
+alert('В ответе сервера можно увидеть формат заказа, который приходит на email студии');
                    }//Успешно
             ).error(
                 function () {
@@ -568,7 +568,7 @@ $('#page-breadcrumb').append(data);
                 },
                 function(data){
 sendedZakaz();
-$('#page-breadcrumb').append(data);
+alert('В ответе сервера можно увидеть формат заказа, который приходит на email студии');
 }
             ).error(
                 function () {

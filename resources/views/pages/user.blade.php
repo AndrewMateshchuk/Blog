@@ -15,9 +15,11 @@
         </div>
         <div class="col-sm-12">
             <h3>Notations({{count($notes['id'])}})</h3>
-             @if({{count($notes['id']) == 0}})
+@if(isset($name))
+             @if(count($notes['id']) == 0 && $name == $author_name)
              <h4>You have no notations, but you can fix it)</h4>
              @endif
+@endif
             <ul>
                 @for($i = 0; $i < count($notes['id']); $i++)
                     <li style="padding-bottom: 5px;"><a href="/public/note/{{$notes['id'][$i]}}">{{$notes['title'][$i]}}</a></li>

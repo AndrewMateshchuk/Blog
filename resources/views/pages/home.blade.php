@@ -5,9 +5,9 @@
         $(window).scroll(function(){
             if($(window).scrollTop() > $('.main').prop('offsetTop')){
                 $('#main_menu').addClass('vertical_menu nav-stacked ');
-                $('#main_menu').removeClass('col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-5 col-sm-6 col-sm-offset-3');
+                $('#main_menu').removeClass('col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-6 col-sm-8 col-sm-offset-2');
             }else{
-                $('#main_menu').addClass('col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-5 col-sm-6 col-sm-offset-3');
+                $('#main_menu').addClass('col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-6 col-sm-8 col-sm-offset-2');
                 $('#main_menu').removeClass('vertical_menu nav-stacked');
             }
         });

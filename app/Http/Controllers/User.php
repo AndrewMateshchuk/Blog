@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
     public static function isAuth($view){
         if(Auth::check()){
-            return view($view, [ 'name'=>Auth::user()->name, 'user_id'=>Auth::user()->id ]);
+            return view($view, [ 'name'=>Auth::user()->name, 'user_id'=>Auth::user()->id]);
         }else{
             return view($view);
         }
@@ -21,7 +21,6 @@ class User extends Authenticatable
         'password',
     ];
     protected $hidden = [
-        'password',
-        'remember_token',
+        'remember_token','id'
     ];
 }

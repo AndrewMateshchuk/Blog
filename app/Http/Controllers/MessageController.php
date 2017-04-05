@@ -10,7 +10,7 @@ class MessageController extends Controller
     public function update(Request $r){
         $mes = Message::where('id', '>', $r->input('last'))
                         ->orderBy('id', 'desc')
-                        ->take(10)
+                        ->take(20)
                         ->get()
                         ->toJson();
         return response($mes);
@@ -29,7 +29,7 @@ class MessageController extends Controller
     public function loadMessages(Request $r){
         $mes = Message::where('id', '<', $r->input('first'))
                         ->orderBy('id', 'desc')
-                        ->take(10)
+                        ->take(20)
                         ->get()
                         ->toJson();
         return response($mes);

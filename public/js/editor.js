@@ -74,7 +74,7 @@ ga('send', 'pageview');
              }
          });
          }else{
-             alert('Text > 500');
+             alert('В статье должно быть более 500 символов');
          }
      }else{
          $('.form-group').addClass('has-error');
@@ -105,7 +105,7 @@ function fix_notation(){
                 }
             });
         }else{
-            alert('Text > 500');
+            alert('В статье должно быть более 500 символов');
         }
     }else{
         $('.form-group').addClass('has-error');

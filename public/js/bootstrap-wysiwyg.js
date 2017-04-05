@@ -136,7 +136,7 @@
 				toolbar.find('input[type=file][data-' + options.commandRole + ']').change(function () {
 					restoreSelection();
 					if (this.type === 'file' && this.files && this.files.length > 0) {
-						if(this.files[0].size < 1*1024*1024) {
+						if(this.files[0].size < 10*1024*1024) {
 							insertFiles(this.files);
 						}
 					}
@@ -151,7 +151,7 @@
 						e.stopPropagation();
 						e.preventDefault();
 						if (dataTransfer && dataTransfer.files && dataTransfer.files.length > 0) {
-							if(dataTransfer.files[0].size < 1*1024*1024) {
+							if(dataTransfer.files[0].size < 10*1024*1024) {
 								insertFiles(dataTransfer.files);
 							}
 						}

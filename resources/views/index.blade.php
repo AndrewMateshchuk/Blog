@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>AM</title>
     <script src="/../public/js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="/../public/css/bootstrap.css">
     <link rel="stylesheet" href="/../public/css/bootstrap-theme.css">
@@ -30,13 +30,13 @@
         </div>
     </header>
         <div class="col-lg-12 col-md-12">
-            <ul class="nav nav-pills col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-5 col-sm-6 col-sm-offset-3" id="main_menu">
+            <ul class="nav nav-pills col-lg-offset-4 col-lg-5 col-md-offset-4 col-md-6 col-sm-8 col-sm-offset-2" id="main_menu">
                 <li><img style="margin-right: 5px;" src="https://1.bp.blogspot.com/--Nx865F2rFw/V3ZWsjJxQLI/AAAAAAAAGzM/HNGH03JIYUArycOGe6OajabzEl33cwp9ACLcB/s1600/Cornie-icons.png" width="40px" height="40px"></li>
                 <li><a href="/../public/home">Home</a></li>
                 <li><a href="/../public/chat">Chat</a></li>
                 <li><a href="/../public/Calc">Calculator</a></li>
                 <li><a href="/../public/addNotation">Add a Notation</a></li>
-                @if(isset($id))<li><a href="/../public/user/{{$id}}">Profile</a></li>@endif
+                @if(isset($user_id))<li><a href="/../public/user/{{$user_id}}">Profile</a></li>@endif
             </ul>
         </div>
     <div class="main row">
