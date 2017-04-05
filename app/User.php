@@ -10,7 +10,7 @@ class User extends Authenticatable
     use Notifiable;
     public static function isAuth($view){
         if(Auth::check()){
-            return view($view, [ 'name'=>Auth::user()->name ]);
+            return view($view, [ 'name'=>Auth::user()->name, 'id'=>Auth::user()->id]);
         }else{
             return view($view);
         }

@@ -35,10 +35,8 @@
                 <li><a href="/../public/home">Home</a></li>
                 <li><a href="/../public/chat">Chat</a></li>
                 <li><a href="/../public/Calc">Calculator</a></li>
-                <li><a href="/../public/addNotation">Add Notation</a></li>
-                @if(isset($name))
-                <li><a href="/../public/MyProfile">Profile</a></li>
-                @endif
+                <li><a href="/../public/addNotation">Add a Notation</a></li>
+                @if(isset($id))<li><a href="/../public/user/{{$id}}">Profile</a></li>@endif
             </ul>
         </div>
     <div class="main row">
