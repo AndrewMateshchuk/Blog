@@ -19,9 +19,10 @@ class MessageController extends Controller
     public function newMessage(Request $r){
             if (Auth::check()) {
                 $user = Auth::user();
-                $mes = new Message();
-                $mes->name = $user->name;
-                $mes->message = htmlspecialchars($r->input('message'));
+                $mes = new Message(array(
+                    'name'=>$user->name,
+                    'message'=>htmlspecialchars($r->input('message'))
+                ));
                 $mes->save();
             }
     }

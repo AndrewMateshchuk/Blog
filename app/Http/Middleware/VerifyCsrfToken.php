@@ -24,6 +24,7 @@ class VerifyCsrfToken extends BaseVerifier
         'note/getComments',
         'note/downloadComments',
         'note/add_answer',
-        'note/like'
+        'note/like',
+        'home/vote'
     ];
 }

@@ -30,10 +30,11 @@ class AuthController extends Controller
             return redirect()->back()->withErrors($validator);
         }else{
             $img = $r->file('image');
-            $user = new User();
-            $user->name = $r->input('name');
-            $user->email = $r->input('email');
-            $user->password = Hash::make($r->input('password'));
+            $user = new User(array(
+                'name'=>$r->input('name'),
+                'email'=>$r->input('email'),
+                'password'=>Hash::make($r->input('password'))
+            ));
             $user->save();
             if(isset($img)) {
                 if(($img->extension() == "jpeg" || $img->extension() == "jpg" || $img->extension() == "png") && $img->getClientSize() < 5000000) {

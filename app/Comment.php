@@ -9,7 +9,8 @@ class Comment extends Model
     protected $fillable = [
         'text',
         'name',
-        'sub_id'
+        'note_id',
+        'sub_id',
     ];
     protected $guarder = [
         'id',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Comment;
 use App\Notation;
+use App\User;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -12,10 +13,11 @@ class CommentController extends Controller
         if( Notation::find($r->input('note_id')) != NULL  ) {
             if (Auth::check()) {
                 $user = Auth::user();
-                $comment = new Comment();
-                $comment->name = $user->name;
-                $comment->note_id = $r->input('note_id');
-                $comment->text = htmlspecialchars($r->input('text'));
+                $comment = new Comment(array(
+                        'text'=>htmlspecialchars($r->input('text')),
+                        'name'=>$user->name,
+                        'note_id'=>$r->input('note_id')
+                    ));
                 $comment->save();
             }
         }
@@ -32,9 +34,9 @@ class CommentController extends Controller
                                     ->whereBetween('sub_id',[ $comment[count($comment)-1]->id, $comment[0]->id ])
                                     ->orderBy('id', 'desc')
                                     ->get();
-            return response(json_encode(array( $comment, $sub_comment )));
+           return response(json_encode(array($comment, $sub_comment )));
         }else{
-            return response(json_encode(array($comment, [])));
+          return response(json_encode(array($comment, [])));
         }
     }
 
@@ -60,11 +62,12 @@ class CommentController extends Controller
         if(Comment::find($r->input('sub_id')) != NULL) {
             if (Auth::check()) {
                 $user = Auth::user();
-                $comment = new Comment();
-                $comment->name = $user->name;
-                $comment->note_id = $r->input('note_id');
-                $comment->sub_id = $r->input('sub_id');
-                $comment->text = htmlspecialchars($r->input('text'));
+                $comment = new Comment(array(
+                    'name'=>$user->name,
+                    'note_id'=>$r->input('note_id'),
+                    'sub_id'=>$r->input('sub_id'),
+                    'text'=>htmlspecialchars($r->input('text'))
+                ));
                 $comment->save();
             }
         }

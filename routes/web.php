@@ -42,4 +42,5 @@ Route::post('note/add_comment', 'CommentController@addComment');
 Route::post('note/getComments', 'CommentController@getComments');
 Route::post('note/downloadComments', 'CommentController@downloadComments');
 Route::post('note/add_answer', 'CommentController@addAnswer');
-Route::post('note/like', 'LikeController@like');
+Route::post('note/like', 'LikeVoteController@like');
+Route::post('home/vote', 'LikeVoteController@vote');

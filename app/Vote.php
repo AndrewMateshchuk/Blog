@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class Vote extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'user_id',
-        'note_id'
+        'ip',
+        'vote',
     ];
-    protected $guarder = [
-        'id',
+    protected $guarded = [
+        'id'
     ];
 }
