@@ -32,7 +32,7 @@
             <div class="note_link">
                 <a href="note/{{$note->id}}">Читать дальше</a>
                 <div class="like" style="float: right;">
-                    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_tx0yH2iTVLbxhfavJrDqeZYesUOCvS6OmkC37ZnmQJ-kU7U9tG1Lads" width="25" height="25"><div style="display: inline;padding-left: 5px">{{$likes[$note->id]}}</div>
+                    <img @if(isset($name))style="cursor: pointer;" onclick="homeLike({{$note->id}}, this)"@endif src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT_tx0yH2iTVLbxhfavJrDqeZYesUOCvS6OmkC37ZnmQJ-kU7U9tG1Lads" width="25" height="25"><div style="display: inline;padding-left: 5px">{{$likes[$note->id]}}</div>
                 </div>
             </div>
             <hr>

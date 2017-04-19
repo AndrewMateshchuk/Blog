@@ -8,9 +8,16 @@
     @if(isset($name))
         <link href="/../public/css/download_animation.css" rel="stylesheet">
         <script>
-            @if(isset($note))
-                var note_id = "{{$note->id}}";
-            @endif
+            var module = (function () {
+                @if(isset($note))
+                var noteId = "{{$note->id}}";
+                @endif
+                return {
+                    getNoteId : function () {
+                        return noteId;
+                    }
+                }
+            })();
         </script>
     @endif
 @stop

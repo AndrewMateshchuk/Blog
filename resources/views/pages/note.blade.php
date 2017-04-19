@@ -12,11 +12,21 @@
                 $('#main_menu').removeClass('vertical_menu nav-stacked');
             }
         });
-        var note_id = "{{$note->id}}";
-        var isSign = 0;
-        @if(isset($name))
-            isSign = 1;
-        @endif
+        var module = (function () {
+            var noteId = "{{$note->id}}";
+            var isSign = 0;
+            @if(isset($name))
+                isSign = 1;
+            @endif
+            return {
+                getNoteId : function () {
+                    return noteId;
+                },
+                isSign : function () {
+                    return isSign;
+                }
+            }
+        })();
     </script>
 @stop
 @section('content')

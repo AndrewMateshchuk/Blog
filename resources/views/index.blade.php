@@ -37,16 +37,18 @@
                 <li><a href="/../public/Calc">Calculator</a></li>
                 <li><a href="/../public/addNotation">Add a Notation</a></li>
                 @if(isset($user_id))<li><a href="/../public/user/{{$user_id}}">Profile</a></li>@endif
+                <li><a href="/../public/about">About</a></li>
             </ul>
         </div>
     <div class="main row">
         @yield('content')
     </div>
     <footer class="text-center row">
+        <div>
+            <a href="https://github.com/AndrewMateshchuk"><img src="https://image.flaticon.com/icons/png/512/25/25231.png" alt="GithubLink" height="50px" width="50px"></a>
+        </div>
         <div class="footer_title">
             <h5>Andrew Mateshchuk</h5>
-        </div>
-        <div class="footer_content">
         </div>
     </footer>
     <div class="modal fade login_form_modal" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">

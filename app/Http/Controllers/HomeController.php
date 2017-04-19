@@ -15,6 +15,9 @@ class HomeController extends Controller
     public function welcome(){
         return User::isAuth('pages/welcome');
     }
+    public function about(){
+        return User::isAuth('pages/about');
+    }
     public function addNotation(){
         return User::isAuth('pages/notation');
     }

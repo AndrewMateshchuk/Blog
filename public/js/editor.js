@@ -91,12 +91,12 @@ function fix_notation(){
                 {
                     title : $('#title').val(),
                     text : $('#editor').html(),
-                    id : note_id
+                    id : module.getNoteId()
                 },
                 success : function(){
                     $('#cssload-pgloading').hide();
                     $('#add_notation').prop('disabled', false);
-                    location.replace('/../public/note/'+note_id);
+                    location.replace('/../public/note/'+module.getNoteId());
                 },
                 error : function(){
                     $('#cssload-pgloading').hide();
@@ -119,7 +119,7 @@ function deleteNote(){
             url : "/../public/deleteNote",
             data :
             {
-                id : note_id
+                id : module.getNoteId()
             },
             success : function(){
                 location.replace('/../public/home');

@@ -23,7 +23,7 @@ Route::get('/registration', 'HomeController@registration');
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/addNotation', 'HomeController@addNotation');
 Route::get('/user/{id}', 'UserController@getUser');
-
+Route::get('/about', 'HomeController@about');
 
 Route::post('/login', 'Auth\AuthController@login');
 Route::get('/logout', 'Auth\AuthController@logout');

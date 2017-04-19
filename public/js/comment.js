@@ -12,7 +12,7 @@ function add_comment(){
             "/public/note/add_comment",
             {
                 text: text,
-                note_id: note_id,
+                note_id: module.getNoteId(),
 
             },
             function (data) {
@@ -31,7 +31,7 @@ function get_comments(){
             url : "/public/note/getComments",
             data :
             {
-                note_id:note_id
+                note_id:module.getNoteId()
             },
             success : function(data){
                 var res = $.parseJSON(data);
@@ -70,7 +70,7 @@ function download_comments(){
         url : "/public/note/downloadComments",
         data :
         {
-            note_id:note_id,
+            note_id:module.getNoteId(),
             first:first
         },
         success : function(data){
@@ -107,7 +107,7 @@ function download_comments(){
 }
 
 function ShowAnswer(id){
-    if(isSign){
+    if(module.isSign()){
         $('.answer').remove();
         id = $(id).attr('id');
         $("#"+id).after("<div class='type_zone answer'><textarea class='col-lg-offset-2 col-lg-8 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-1' id='type_answer' rows='3' placeholder='Your answer' maxlength='1000'></textarea><span onclick='answer("+id+")'><img id='send_answer' src='https://maxcdn.icons8.com/Share/icon/win10/Messaging//send1600.png' height='50px' width='50px'></span></div>");
@@ -115,7 +115,6 @@ function ShowAnswer(id){
 }
 
 function answer(id){
-    console.log(note_id);
     var message = $("#type_answer").val();
     if (message !== "") {
         $("#type_answer").val("");
@@ -125,7 +124,7 @@ function answer(id){
             {
                 text: message,
                 sub_id:id,
-                note_id:note_id
+                note_id : module.getNoteId()
             },
             function (data) {
                 document.getElementById("send_answer").disabled = false;
